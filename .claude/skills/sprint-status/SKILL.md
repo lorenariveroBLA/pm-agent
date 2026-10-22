@@ -12,7 +12,7 @@ The manager wants to know how the current sprint is going: whether the board dat
 Produce the Sprint Report for the active sprint (or the one named) with hygiene, scope changes, progress, feasibility and sprint goal assessment.
 
 ## Use
-- Base JQL: `project = <KEY> AND sprint in openSprints()` (or `sprint = "<name>"`).
+- Board: resolved from the board URL (see CLAUDE.md). Base JQL: `project = <KEY> AND sprint in openSprints()` (or `sprint = "<name>"`); when the board filters more than one project, use the board's sprints via `executeRead` instead.
 - Sprint field → name, dates, goal.
 - Sprint field changelog of each issue → detect issues added after `startDate`.
 - History: the last 3–6 closed sprints of the board, for reference velocity.
@@ -76,5 +76,4 @@ A report with these sections, in this order:
 After report-critic returns PASS, publish the same report as an Artifact for the manager:
 - Show every metric and finding from the 8 sections: verdict banner, numbers as stat tiles, progress vs. time chart, hygiene and scope tables with issue keys, sprint goal verdict, recommendations, assumptions.
 - Same numbers as the text report; nothing new, nothing rounded differently.
-- One artifact per sprint. If `decisions.md` already lists an artifact URL for this sprint, update that artifact in place; otherwise create a new one in the same style and record its URL in the run entry.
-- Known artifacts: DAT "Oct B - Governance Groundwork" → https://claude.ai/artifact/KrAqL4j6iAnZo6S4hH7vm1
+- One artifact per sprint. If `decisions.md` already lists an artifact URL for this board URL and sprint, update that artifact in place; otherwise create a new one in the same style and record its URL in the run entry.

@@ -25,11 +25,12 @@ Mode 1 covers sprint status against the sprint goal only. Two needs above are de
 ## Board setup cache
 <!-- pm-agent fills this on the first run per board: SP field, Sprint field, hierarchy, team type -->
 
-### DAT (verified 2026-10-21, run 1)
+### DAT — https://team-1625057440965.atlassian.net/jira/software/c/projects/DAT/boards/1809 (verified 2026-10-21, run 1)
 - Board "Data Product" (id 1809), Scrum, project DAT. cloudId `7c906d30-c1f8-4539-97a4-a5dec982b02e`.
 - Story Points = `customfield_10026`; Sprint = `customfield_10020`; Epic Link = `customfield_10014`.
 - Hierarchy: Initiative → Epic → Story/Improvement/Spike/Bug → Sub-task. SP live at story level only.
 - Extra statuses: Backlog, Ready for Development (To Do category); Blocked, Ready For Release (In Progress category).
+- Artifacts: Oct B - Governance Groundwork → https://claude.ai/artifact/KrAqL4j6iAnZo6S4hH7vm1
 - Board restarted Oct 2026: "Oct A - Nashville Takeaways" (1535) was a cleanup sprint (1 SP resolved), not usable as velocity. 2025 sprints are a different era. "Oct B - Governance Groundwork" (1617, 2026-10-16 → 10-29) is the 2nd sprint → low confidence on any projection.
 - The team estimates in bulk after sprint start (whole sprint estimated 2026-10-19), so "SP at startDate" reads 0; use the first-estimate baseline and say so.
 - Removal check via `updated >= start` returns ~750 issues (bulk edits); scan next-sprint issues instead.
