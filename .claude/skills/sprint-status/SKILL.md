@@ -54,7 +54,10 @@ Jira keeps no snapshot of a sprint, so reconstruct it from changelogs:
    - No goal → hygiene finding; recommend writing one.
    - Goal present → identify the issues that support it by matching the goal text against issue summaries and parents. This is always an inference: label it as such and list the matched keys so the manager can correct them.
    - Assess those issues' status. Verdict: Met / At risk / Not met, with 1–2 lines of reasoning.
-8. **Recommendations:** at most 5, actionable, prioritized. Examples: "Estimate PROJ-12 and PROJ-15 before the daily", "Negotiate pulling PROJ-40 (5 SP) out to protect the goal".
+8. **Recommendations:** at most 5, actionable, prioritized. Examples: "Estimate PROJ-12 and PROJ-15 before the daily", "Negotiate pulling PROJ-40 (5 SP) out to protect the goal". Each one has three parts:
+   - **What:** the concrete actions, as bullets with issue keys.
+   - **Why:** the finding and number that call for it.
+   - **How it helps:** the effect on this sprint (focus, forecast, goal, board accuracy).
 
 ## Constraints
 - Do not assume everything not Done will fail: an In Progress ticket with fewer than 2 days in that status (from the status changelog) counts as probable progress, but not as complete.
@@ -63,17 +66,19 @@ Jira keeps no snapshot of a sprint, so reconstruct it from changelogs:
 
 ## Done when
 A report with these sections, in this order:
-1. **Verdict** (1 line): sprint status (🟢/🟡/🔴) + goal status.
-2. **Executive summary** (≤ 120 words).
+1. **Verdict:** a 3-column table with Sprint status (🟢/🟡/🔴), Sprint goal (🟢 Met / 🟡 At risk / 🔴 Not met) and Confidence, each with its one-line reason.
+2. **Executive summary** (≤ 120 words), as labeled bullets (Progress, Scope, Fit, Blocked, Goal, Decision needed), not a paragraph.
 3. **Numbers table:** SP start / added / removed / estimate changes / current / Done / pending, % time, % complete, projected capacity, velocity trend.
 4. **Hygiene:** one table per finding type, with keys.
 5. **Scope changes:** table with key, SP, added/removed, date.
 6. **Sprint goal:** the goal, the linked issues (marked as inferred) and the verdict.
-7. **Recommendations:** ≤ 5.
+7. **Recommendations:** ≤ 5, each with What / Why / How it helps.
 8. **Assumptions and missing data.**
+
+Writing style for the report and the artifact: bullets over paragraphs. No paragraph longer than 2 sentences; break reasoning (goal verdict, summary, notes) into bullets.
 
 ## Human-friendly view (artifact)
 After report-critic returns PASS, publish the same report as an Artifact for the manager:
-- Show every metric and finding from the 8 sections: verdict banner, numbers as stat tiles, progress vs. time chart, hygiene and scope tables with issue keys, sprint goal verdict, recommendations, assumptions.
+- Show every metric and finding from the 8 sections: three prominent verdict cards at the top (Sprint status, Sprint goal, Confidence, each colored by its status with 2–3 bullet reasons), the executive summary as bullets, numbers as stat tiles, progress vs. time chart, hygiene and scope tables with issue keys, sprint goal verdict as bullets, recommendations with What / Why / How it helps, assumptions as bullets.
 - Same numbers as the text report; nothing new, nothing rounded differently.
 - One artifact per sprint. If `decisions.md` already lists an artifact URL for this board URL and sprint, update that artifact in place; otherwise create a new one in the same style and record its URL in the run entry.

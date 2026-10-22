@@ -10,3 +10,4 @@ One row per pm-agent run. Times come from the session transcript (`~/.claude/pro
 |---|---|---|---|---|---|---|---|---|---|---|
 | 2026-10-21 | DAT | Oct B - Governance Groundwork | 1 | c40c5165 | not captured | not captured | not captured | | not captured | Run 1; timing not logged |
 | 2026-10-22 | DAT | Oct B - Governance Groundwork | 1 | 637146bb / 3e50f71b | 16:08:59 | 16:22:17 | 13.3 | | 10% (95k) → 31% (312.9k) | Run 2 via prompts/brief.md; critic PASS; artifact updated |
+| 2026-10-22 | DAT | Oct B - Governance Groundwork | 1 | 3e50f71b | 17:10:34 | 17:13:40 | 3.1 | | not captured | Run 3; incremental refresh (no Jira changes since run 2); critic PASS on first review; artifact v6 |
