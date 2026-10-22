@@ -25,6 +25,17 @@ A Claude Code kit that writes the daily **Sprint Status & Hygiene** report for a
 2. Approve the Jira read calls when asked (any write call is blocked by the hook).
 3. The report comes back after `report-critic` passes, and a new entry lands in `decisions.md`.
 
+## What you get
+An 8-section sprint report in the terminal (verdict, executive summary, numbers, hygiene, scope changes, sprint goal, recommendations, assumptions), the same report as a human-friendly Artifact on claude.ai (private to you by default), and a new run entry in `decisions.md`.
+
+## Troubleshooting
+| Symptom | Fix |
+|---|---|
+| `/mcp` shows "connection timed out" | Run `/mcp` again and reconnect **atlassian**. |
+| "Input must be provided…" or "Unknown command" | Claude was started outside an interactive terminal or with the wrong flags. Open a new Terminal window and run `./start.sh`. |
+| "BLOCKED by guard hook" | Intended: the kit is read-only on Jira. The agent turns the change into a recommendation. |
+| The agent does not find `sprint-status` or `report-critic` | Start it with `./start.sh` from inside the kit folder; it loads the project's `.claude/` settings. |
+
 ## Versioning
 No git in this environment. Before each work session run `./snapshot.sh "label"`: it saves a full copy of the kit to `../pm-agent-versions/` and logs it in `CHANGELOG.md`. To restore, copy a snapshot folder back over `pm-agent/`. Inside a session, Claude Code's `/rewind` undoes recent edits.
 

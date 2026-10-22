@@ -42,7 +42,18 @@ Mode 1 covers sprint status against the sprint goal only. Two needs above are de
 - /context before → after: not captured
 - Critic: not available yet (subagent added on 2026-10-22)
 - What broke: SP-at-start reconstruction failed (bulk estimation after start); removal detection too broad (~750 candidates); the session used the claude.ai Atlassian connector instead of the kit's MCP; board setup was saved to Claude's auto-memory instead of this file.
-- Output: report + "DAT Oct B Sprint Report" artifact (human-friendly view, requested after the report).
+- Output: report + "DAT Oct B Sprint Report" artifact https://claude.ai/artifact/KrAqL4j6iAnZo6S4hH7vm1 (human-friendly view, requested after the report).
+- Manager decision:
+
+### 2026-10-22 — DAT — Oct B - Governance Groundwork (run 2)
+- Mode: 1 Sprint Status & Hygiene, active sprint, via `prompts/brief.md`. Inputs: holidays not given (assumed none, after the manager declined the question prompt); absence: one team member OoO Fri Oct 16 → Fri Oct 23.
+- Run time: 13.3 min (16:08:59 → 16:22:17 local, see measure.md). By hand: __ min
+- /context before → after: 10% (95k) → 31% (312.9k)
+- Critic: PASS (4 minor notes, all applied; one was a real miscount, 8 → 9 open Brand Insights issues)
+- Result: 🔴 Off track (24.0% done vs 55.6% time, gap 31.6 pp; 228 SP pending vs ~63 SP run-rate, low confidence). Goal: At risk (25.3% of 91 goal SP).
+- What broke: the kit's `atlassian` MCP wasn't loaded (the session wasn't started with start.sh), so the claude.ai connector was used and the guard hook didn't cover it. One changelog subagent was reported "failed" but had already written its file (verified 41/41 keys). The scratchpad dir disappeared mid-run, so data moved to `runs/2026-10-22-DAT/`. There is no sprint report via MCP; removals to the backlog (206 candidates) were not checked. The calendar changed from run 1 (10 → 9 working days, excluding Oct 29, which ends at 09:00 ET).
+- Board setup learned: sprint 1617's earlier name is "Oct B - Governance"; "Oct B - Governance 2" is a different sprint, so match by exact name. The removal scan of future sprints 1619/1620 works (86 issues, 3 removals found).
+- Output: `runs/2026-10-22-DAT/report.md`; artifact updated in place: https://claude.ai/artifact/KrAqL4j6iAnZo6S4hH7vm1 (files/index.html v3; Oct 21 datasets relabelled as superseded).
 - Manager decision:
 
 <!--

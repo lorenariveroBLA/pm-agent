@@ -71,3 +71,10 @@ A report with these sections, in this order:
 6. **Sprint goal:** the goal, the linked issues (marked as inferred) and the verdict.
 7. **Recommendations:** ≤ 5.
 8. **Assumptions and missing data.**
+
+## Human-friendly view (artifact)
+After report-critic returns PASS, publish the same report as an Artifact for the manager:
+- Show every metric and finding from the 8 sections: verdict banner, numbers as stat tiles, progress vs. time chart, hygiene and scope tables with issue keys, sprint goal verdict, recommendations, assumptions.
+- Same numbers as the text report; nothing new, nothing rounded differently.
+- One artifact per sprint. If `decisions.md` already lists an artifact URL for this sprint, update that artifact in place; otherwise create a new one in the same style and record its URL in the run entry.
+- Known artifacts: DAT "Oct B - Governance Groundwork" → https://claude.ai/artifact/KrAqL4j6iAnZo6S4hH7vm1
