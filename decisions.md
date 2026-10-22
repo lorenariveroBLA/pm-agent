@@ -100,6 +100,17 @@ Mode 1 covers sprint status against the sprint goal only. Two needs above are de
 - Result: run 4 stands: 🔴 Off track, goal 🟡 At risk, low confidence. Artifact v7 is current.
 - Manager decision:
 
+### 2026-10-22 — DAT — Oct B - Governance Groundwork (run 7, via prompts/brief.md)
+- Mode: 1 Sprint Status & Hygiene. Session opened with a one-word request ("pm-agent"), then "run prompt/brief.md".
+- Run time: 2.0 min (17:50:54 → 17:52:55 local; the start is the first tool call). By hand: __ min
+- /context mid-run → after: 8% (77.8k) → 12% (115.7k of 1M)
+- Check: `project = DAT AND updated >= "2026-10-22 16:27"` (15 min overlap with run 6) returned DAT-2403, DAT-2404 and DAT-2471. All three are only in future sprint "Feb A - Engagement Signals". DAT-2471's changelog shows it entered Feb A on 2026-10-16 and was never in 1617. Sprint 1617 is unchanged.
+- Report: `runs/2026-10-22-DAT-r7/report.md`, which is run 4's report with the Data source bullet updated.
+- Critic: PASS. One note was applied: the overlap claim now names run 6's check time.
+- Result: run 4 stands. 🔴 Off track, goal 🟡 At risk, low confidence. Artifact v7 is current and was not republished, since no metric changed.
+- What broke: the snowflake MCP timed out (not used by the kit). The kit's `atlassian` MCP is still not loaded, so the claude.ai connector was used.
+- Manager decision:
+
 <!--
 ### YYYY-MM-DD — <board> — <sprint>
 - Mode: 1 Sprint Status & Hygiene
