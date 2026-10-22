@@ -31,6 +31,12 @@ Mode 1 covers sprint status against the sprint goal only. Two needs above are de
 - Hierarchy: Initiative → Epic → Story/Improvement/Spike/Bug → Sub-task. SP live at story level only.
 - Extra statuses: Backlog, Ready for Development (To Do category); Blocked, Ready For Release (In Progress category).
 - Artifacts: Oct B - Governance Groundwork → https://claude.ai/artifact/KrAqL4j6iAnZo6S4hH7vm1
+  - It is a Dashboard-type artifact. The page is not a published file: it lives in the artifact's own database, at `files/index.html` (field `text`). Update it with `ArtifactData` set, pinned with `if_version` (v6 as of 2026-10-22 run 3).
+  - Rebuild it with `runs/<run>/py/build_page.py`, which reads `data/metrics.json`, `data/rows.json`, `data/recs.json`, `report.md` and `artifact/index_old.html` (the Oct 21 stylesheet). `runs/` is git-ignored, so the scripts exist only locally.
+  - CSS gotcha: the old stylesheet's `.sp-recs li` grid also hits nested lists. The builder overrides it with `.sp-recs .rl li{display:list-item…}`.
+  - The datasets `summary`, `daily`, `issues`, `notes` and `recs` are the Oct 21 snapshot. They are labelled superseded, and the page does not use them.
+- Faster re-runs within the same sprint: diff a fresh sprint snapshot against the last run's `rows.json`, then refetch changelogs only for issues updated since then. For removals, check future sprints 1619/1620 with `updated >=` the last run. Run 3 took 3.1 min this way, against 13.3 min for a full run.
+- Full changelog fetch: 82 issues. Split it across 2 fork agents, and have each write JSON keeping only the Sprint, SP and status items. Issue descriptions make the raw changelog responses huge.
 - Board restarted Oct 2026: "Oct A - Nashville Takeaways" (1535) was a cleanup sprint (1 SP resolved), not usable as velocity. 2025 sprints are a different era. "Oct B - Governance Groundwork" (1617, 2026-10-16 → 10-29) is the 2nd sprint → low confidence on any projection.
 - The team estimates in bulk after sprint start (whole sprint estimated 2026-10-19), so "SP at startDate" reads 0; use the first-estimate baseline and say so.
 - Removal check via `updated >= start` returns ~750 issues (bulk edits); scan next-sprint issues instead.
