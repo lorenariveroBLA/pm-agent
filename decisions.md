@@ -31,7 +31,7 @@ Mode 1 covers sprint status against the sprint goal only. Two needs above are de
 - Hierarchy: Initiative → Epic → Story/Improvement/Spike/Bug → Sub-task. SP live at story level only.
 - Extra statuses: Backlog, Ready for Development (To Do category); Blocked, Ready For Release (In Progress category).
 - Artifacts: Oct B - Governance Groundwork → https://claude.ai/artifact/KrAqL4j6iAnZo6S4hH7vm1
-  - It is a Dashboard-type artifact. The page is not a published file: it lives in the artifact's own database, at `files/index.html` (field `text`). Update it with `ArtifactData` set, pinned with `if_version` (v6 as of 2026-10-22 run 3).
+  - It is a Dashboard-type artifact. The page is not a published file: it lives in the artifact's own database, at `files/index.html` (field `text`). Update it with `ArtifactData` set, pinned with `if_version` (v7 as of 2026-10-22 run 4).
   - Rebuild it with `runs/<run>/py/build_page.py`, which reads `data/metrics.json`, `data/rows.json`, `data/recs.json`, `report.md` and `artifact/index_old.html` (the Oct 21 stylesheet). `runs/` is git-ignored, so the scripts exist only locally.
   - CSS gotcha: the old stylesheet's `.sp-recs li` grid also hits nested lists. The builder overrides it with `.sp-recs .rl li{display:list-item…}`.
   - The datasets `summary`, `daily`, `issues`, `notes` and `recs` are the Oct 21 snapshot. They are labelled superseded, and the page does not use them.
@@ -72,6 +72,32 @@ Mode 1 covers sprint status against the sprint goal only. Two needs above are de
 - Result: unchanged from run 2: 🔴 Off track, goal 🟡 At risk, low confidence.
 - What worked: an incremental refresh. Diffing the new snapshot against run 2 found only DAT-4198 and DAT-4209 updated, and neither had new history, so 82 changelog fetches were skipped. Future sprints updated since 15:00 ET: only DAT-4216, never in sprint 1617.
 - Output: `runs/2026-10-22-DAT-r3/report.md`; artifact files/index.html v6.
+- Manager decision:
+
+### 2026-10-22 — DAT — Oct B - Governance Groundwork (run 4)
+- Mode: 1 Sprint Status & Hygiene. Inferred from a one-word request ("pm-agent"). Board and sprint inputs came from profile.local.json.
+- Run time: 2.9 min (17:34:57 → 17:37:49 local; the start is the first tool call, not the prompt). By hand: __ min
+- /context before → after: not captured
+- Critic: PASS on the first review, with no findings. It couldn't parse rows.json without a shell, so the "36 non-goal items" count and the 74.1% estimable share were checked in Python instead.
+- Result: 🔴 Off track (23.4% done vs 55.6% time, gap 32.2 pp; 236 SP pending vs ~63 SP run-rate = 374.6%, low confidence). Goal 🟡 At risk (unchanged, 25.3% of 91 goal SP).
+- What changed: DAT-2022 (8 SP, In Progress, KTLO Engagement Events) was moved in from "Feb A - Engagement Signals" at 16:12 ET, during run 3's snapshot, so run 3 missed it. It carries an "is blocked by COMPLY-202" link. Scope is now 308 SP and scope change is 65.6%.
+- What broke / learned: run 3's "no change" check missed an issue added mid-snapshot. Overlap the incremental `updated >=` window with the previous snapshot by at least 15 min. The kit's `atlassian` MCP still isn't loaded (claude.ai connector used). `listJiraIssueChangelogs` caps maxResults at 50.
+- Output: `runs/2026-10-22-DAT-r4/report.md`; artifact files/index.html v7.
+- Manager decision:
+
+### 2026-10-22 — DAT — Oct B - Governance Groundwork (run 5, no-change check)
+- Mode: 1 Sprint Status & Hygiene. Inferred from a one-word request ("pm-agent"), 2 min after run 4 ended.
+- Run time: ~1.5 min (17:39:24 → ~17:41 local). Report, critic and artifact were not rerun.
+- /context after: 7% (71.7k of 1M; messages 34.6k, deferred MCP tool schemas 119.6k not counted in the 7%)
+- Check: `project = DAT AND updated >= "2026-10-22 16:15"` (15 min overlap with run 4) returned DAT-2403 and DAT-2404. Both sit only in future sprint "Feb A - Engagement Signals" and neither was in sprint 1617 at run 4, so the sprint is unchanged.
+- Result: run 4 stands: 🔴 Off track, goal 🟡 At risk, low confidence. Artifact v7 is current.
+- Manager decision:
+
+### 2026-10-22 — DAT — Oct B - Governance Groundwork (run 6, no-change check)
+- Mode: 1 Sprint Status & Hygiene. Inferred from a one-word request ("pm-agent"), right after run 5.
+- Run time: ~1 min (17:41:27 → ~17:42 local). Report, critic and artifact were not rerun.
+- Check: `project = DAT AND updated >= "2026-10-22 16:24"` (15 min overlap with run 5) returned only DAT-2403 and DAT-2404, unchanged since run 5 and still only in future sprint "Feb A - Engagement Signals". Sprint 1617 unchanged.
+- Result: run 4 stands: 🔴 Off track, goal 🟡 At risk, low confidence. Artifact v7 is current.
 - Manager decision:
 
 <!--
